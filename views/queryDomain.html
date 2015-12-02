@@ -1,0 +1,127 @@
+{{template "header"}}
+<title>域名WHOIS信息查询</title>
+<link rel="stylesheet" type="text/css" href="/static/css/test.css">
+</head>
+<body>
+	<!-- 固定导航栏 -->
+	{{template "navbar" .}}
+
+    <!-- 查询栏 -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<form class="form-inline" method="post" action="/whois/query">
+				  <div class="form-group">
+				    <div class="input-group">
+				      <div class="input-group-addon">域名</div>
+				      <input type="text" class="form-control" id="exampleInputAmount" placeholder="请输入域名" name="queryDomain" required>
+				    </div>
+				  </div>
+				  <button type="submit" class="btn btn-primary">查询</button>
+				</form>
+
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	</div><!-- -->
+   	
+	<br>
+	<!-- 结果展示界面 -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<p class="text-success">
+					域名<strong>{{.domain.Domain}}</strong> 的最新whois信息
+				</p>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-6">
+				 <table class="table table-striped ">
+				        <tr>
+				            <td align="left">>
+				            	<span class="glyphicon glyphicon-home"></span>
+				            	<strong>域名</strong>
+				            </td>
+				            <td>{{.domain.Domain}}</td>
+				        </tr>
+				        <tr>
+				            <td>
+				            	<span class="glyphicon glyphicon-user"></span>
+				            	<strong>注册者</strong>
+				            </td>
+				            <td>{{.domain.RegName}}</td>
+				        </tr>
+				        <tr>
+				            <td>
+				            	<span class="glyphicon glyphicon-send"></span>
+				            	<strong>邮箱</strong>
+				            </td>
+				            <td>{{.domain.RegEmail}}</td>
+				        </tr>
+				        <tr>
+				            <td>
+				            	<span class="glyphicon glyphicon-earphone"></span>
+				            	<strong>电话</strong>
+				            </td>
+				            <td>{{.domain.RegPhone}}</td>
+				        </tr>
+				        <tr>
+				            <td>
+				            	<span class="glyphicon glyphicon-open"></span>
+				            	<strong>IP</strong>
+				            </td>
+				            <td>{{.domain.Ip}}</td>
+				        </tr>
+				        <tr>
+				        	<td>
+				        		<span class="glyphicon glyphicon-time"></span>
+				        		<strong>更新时间</strong>
+				        	</td>
+				        	<td>{{.domain.UpdateTime}}</td>
+				        </tr>				
+				</table>
+			</div>
+			<!-- 侧边栏 -->
+			<div class="col-md-2">
+				<table class="table table-hover">
+					<caption>历史记录</caption>
+					<tr>
+						<td>2015-4-5</td>
+					</tr>
+					<tr>
+						<td>2013-4-5</td>
+					</tr>
+					<tr>
+						<td>2011-4-5</td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<!-- <center><h3>详细信息</h3></center> -->
+				<center><span class="glyphicon glyphicon-cloud-download">详细信息</span></center>
+				<pre>
+					{{.domain.Details}}
+				</pre>
+				
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
